@@ -1,0 +1,33 @@
+{
+  "name": "highlightjs-code-diff",
+  "version": "1.0.0",
+  "description": "Highlight both diff and code syntax with highlight.js!",
+  "license": "Unlicense",
+  "author": "Val (https://val.codejam.info)",
+  "files": [
+    "README.md",
+    "UNLICENSE",
+    "dist"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "repository": "valeriangalliat/highlightjs-code-diff",
+  "scripts": {
+    "build": "esbuild src/index.ts --format=cjs --outdir=dist",
+    "lint": "ts-standard",
+    "prepack": "npm run prepare && npm run lint && npm run type-check && npm test",
+    "prepare": "npm run build && npm run type-declarations",
+    "test": "tsx --test test/index.ts",
+    "type-check": "tsc -noEmit",
+    "type-declarations": "tsc --project tsconfig.build.json --declaration --emitDeclarationOnly"
+  },
+  "devDependencies": {
+    "@tsconfig/recommended": "^1.0.2",
+    "@types/node": "^18.15.11",
+    "esbuild": "^0.17.15",
+    "highlight.js": "^11.7.0",
+    "ts-standard": "^12.0.2",
+    "tsx": "^3.12.6",
+    "typescript": "^5.0.4"
+  }
+}
